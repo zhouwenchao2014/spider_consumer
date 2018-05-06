@@ -5,6 +5,36 @@
     <select id="queryAll" resultType="cn.myhomespace.zhou.spider_consumer.object.Page">
         select *  from spider_page
     </select>
+
+    <select id="count" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1)  from spider_page
+        <trim prefix="WHERE" prefixOverrides="AND |OR ">
+            <if test="siteName!=null">
+                and siteName=#{siteName}
+            </if>
+            <if test="title!=null">
+                and title like #{title}
+            </if>
+        </trim>
+        order by createTime desc
+    </select>
+
+    <select id="queryByParams" parameterType="java.util.Map" resultType="cn.myhomespace.zhou.spider_consumer.object.Page">
+        select * from spider_page
+        <trim prefix="WHERE" prefixOverrides="AND |OR ">
+            <if test="siteName!=null">
+               and siteName=#{siteName}
+            </if>
+            <if test="title!=null">
+                and title like #{title}
+            </if>
+        </trim>
+        order by createTime desc
+        <if test="pageSize!=null">
+            limit #{start},#{pageSize}
+        </if>
+
+    </select>
     <insert id="insertBatch" parameterType="cn.myhomespace.zhou.spider_consumer.object.Page">
         insert into spider_page (title,content,url,siteName,createTime,pic,sources)
         values

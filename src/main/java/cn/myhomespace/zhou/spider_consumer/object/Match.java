@@ -7,6 +7,21 @@ import java.util.List;
  */
 public class Match {
     private String relative;
-    private List<Match> matchs;
+    private List<Condition> conditions;
 
+    public String getRelative() {
+        return relative;
+    }
+
+    public void setRelative(String relative) {
+        this.relative = relative;
+    }
+
+    public List<Condition> getConditions() {
+        return conditions;
+    }
+
+    public void setConditions(List<Condition> conditions) {
+        this.conditions = conditions;
+    }
 }

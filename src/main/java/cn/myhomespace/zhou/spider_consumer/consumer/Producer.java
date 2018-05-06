@@ -2,6 +2,7 @@ package cn.myhomespace.zhou.spider_consumer.consumer;
 
 import cn.myhomespace.zhou.spider_consumer.object.Page;
 import cn.myhomespace.zhou.spider_consumer.object.SpiderProjectManage;
+import cn.myhomespace.zhou.spider_consumer.utils.HtmlAnalysis;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
@@ -51,53 +52,10 @@ public class Producer implements Runnable{
             if(!take.equals(rootUrl)&&spiderUrls.contains(take)){
                 continue;
             }
-            Document doc=null;
-            try {
-                doc = Jsoup.connect(take).get();
-                Elements elements = doc.getElementsByTag("a");
-                Page page = new Page();
-                page.setCreateTime(new Date(System.currentTimeMillis()));
-                page.setSiteName(name);
-                List<String> sources = new ArrayList<>();
-                page.setTitle(doc.title());
-                page.setUrl(take);
-                for (Element element : elements){
-                    String href = element.attr("href");
-                    if(!StringUtils.isEmpty(href)&&href.indexOf(rootUrl)!=-1&&!noSpiderUrls.contains(href)&&!spiderUrls.contains(href)){
-                        noSpiderUrls.add(href);
-                    }
-                    if(!StringUtils.isEmpty(href)&&(href.indexOf("magnet:?xt=urn:btih:")!=-1||href.indexOf("ed2k://|file|")!=-1||href.endsWith(".torrent"))){
-                        sources.add(href);
-                    }else{
-                        boolean thunderrestitle = element.hasAttr("thunderrestitle");
-                        if(thunderrestitle){
-                            String thunderrestitle1 = element.attr("thunderrestitle");
-                            sources.add(thunderrestitle1);
-                        }
-                    }
-
-                }
-                String s = JSONObject.toJSONString(sources);
-                page.setSource(s);
-
-                Elements imgs = doc.getElementsByTag("img");
-                page.setPic("");
-                for(Element img : imgs){
-                    if(img.hasAttr("alt")){
-                        String src = img.attr("src");
-                        page.setPic(src);
-                        break;
-                    }
-                }
-                spiderUrls.add(take);
-                pages.add(page);
-            } catch (IOException e) {
-                e.printStackTrace();
-                noSpiderUrls.add(take);
-            }
+            HtmlAnalysis.chooseAnalysisEngine(noSpiderUrls,spiderUrls,pages,take,spiderProjectManage,false);
             if(i==10){
                 try {
-                    Thread.sleep(1000L);
+                    Thread.sleep(3000L);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

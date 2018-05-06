@@ -3,10 +3,49 @@
 <mapper namespace="cn.myhomespace.zhou.spider_consumer.dao.SpiderProjectManageDao">
 
     <select id="queryAll" resultType="cn.myhomespace.zhou.spider_consumer.object.SpiderProjectManage">
-        select *  from spider_project_manage
+        select *  from spider_project_manage where used=0
     </select>
+
+    <select id="count" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1)  from spider_project_manage
+        <trim prefix="WHERE" prefixOverrides="AND |OR ">
+            <if test="name!=null">
+                and name like #{name}
+            </if>
+            <if test="displayName!=null">
+                and displayName like #{displayName}
+            </if>
+            <if test="rootUrl!=null">
+                and rootUrl like #{rootUrl}
+            </if>
+        </trim>
+        order by createdTime desc
+    </select>
+
+    <select id="queryByParams" parameterType="java.util.Map" resultType="cn.myhomespace.zhou.spider_consumer.object.SpiderProjectManage">
+        select *  from spider_project_manage
+        <trim prefix="WHERE" prefixOverrides="AND |OR ">
+            <if test="name!=null">
+                and name like #{name}
+            </if>
+            <if test="displayName!=null">
+                and displayName like #{displayName}
+            </if>
+            <if test="rootUrl!=null">
+                and rootUrl like #{rootUrl}
+            </if>
+            <if test="id!=null">
+                and id = #{id}
+            </if>
+        </trim>
+        order by createdTime desc
+        <if test="pageSize!=null">
+            limit #{start},#{pageSize}
+        </if>
+    </select>
+
     <insert id="insert" parameterType="cn.myhomespace.zhou.spider_consumer.object.SpiderProjectManage">
-        insert into user (name,displayName,rootUrl,config,createdBy,modifiedBy,createdTime,modifiedTime)
+        insert into spider_project_manage (name,displayName,rootUrl,config,createdBy,modifiedBy,createdTime,modifiedTime)
         values (
         #{name,jdbcType=VARCHAR},
         #{displayName,jdbcType=VARCHAR},
@@ -17,4 +56,36 @@
         #{createdTime,jdbcType=DATE},
         #{modifiedTime,jdbcType=DATE})
     </insert>
+
+    <update id="update" parameterType="java.util.Map">
+        update spider_project_manage
+        <trim prefix="set" prefixOverrides=",">
+            <if test="name!=null">
+                , name like #{name}
+            </if>
+            <if test="displayName!=null">
+                , displayName like #{displayName}
+            </if>
+            <if test="rootUrl!=null">
+                , rootUrl like #{rootUrl}
+            </if>
+            <if test="used!=null">
+                , used = #{used}
+            </if>
+        </trim>
+        <trim prefix="WHERE" prefixOverrides="AND |OR ">
+            <if test="name!=null">
+                and name like #{name}
+            </if>
+            <if test="displayName!=null">
+                and displayName like #{displayName}
+            </if>
+            <if test="rootUrl!=null">
+                and rootUrl like #{rootUrl}
+            </if>
+            <if test="id!=null">
+                and id = #{id}
+            </if>
+        </trim>
+    </update>
 </mapper>

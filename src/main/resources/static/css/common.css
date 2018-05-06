@@ -1,3 +1,5 @@
-tbody td{
-    max-width: 200px;
-}
+/*tbody td{*/
+  /*white-space:nowrap;*/
+  /*overflow:hidden;*/
+  /*text-overflow:ellipsis;*/
+/*}*/

@@ -17,12 +17,22 @@ public class SpiderProjectManage {
     private String name;
     private String displayName;
     private String rootUrl;
-    private String config;
+    private String sourceConfig;
+    private String spiderConfig;
     private String createdBy;
     private String modifiedBy;
     private Date createdTime;
     private Date modifiedTime;
     private boolean isStarting;
+    private int used;
+
+    public int getUsed() {
+        return used;
+    }
+
+    public void setUsed(int used) {
+        this.used = used;
+    }
 
     public boolean isStarting() {
         return isStarting;
@@ -32,35 +42,6 @@ public class SpiderProjectManage {
         isStarting = starting;
     }
 
-    public SpiderProjectManage(int id, String name, String displayName, String rootUrl, String config, String createdBy, String modifiedBy, Date createdTime, Date modifiedTime) {
-        this.id = id;
-        this.name = name;
-        this.displayName = displayName;
-        this.rootUrl = rootUrl;
-        this.config = config;
-        this.createdBy = createdBy;
-        this.modifiedBy = modifiedBy;
-        this.createdTime = createdTime;
-        this.modifiedTime = modifiedTime;
-    }
-
-    public SpiderProjectManage( String name, String displayName, String rootUrl, String config, String createdBy, String modifiedBy, Date createdTime, Date modifiedTime) {
-        this.name = name;
-        this.displayName = displayName;
-        this.rootUrl = rootUrl;
-        this.config = config;
-        this.createdBy = createdBy;
-        this.modifiedBy = modifiedBy;
-        this.createdTime = createdTime;
-        this.modifiedTime = modifiedTime;
-    }
-
-    public SpiderProjectManage( String name, String displayName, String rootUrl, String config) {
-        this.name = name;
-        this.displayName = displayName;
-        this.rootUrl = rootUrl;
-        this.config = config;
-    }
 
     public SpiderProjectManage() {
     }
@@ -97,12 +78,20 @@ public class SpiderProjectManage {
         this.rootUrl = rootUrl;
     }
 
-    public String getConfig() {
-        return config;
+    public String getSourceConfig() {
+        return sourceConfig;
     }
 
-    public void setConfig(String config) {
-        this.config = config;
+    public void setSourceConfig(String sourceConfig) {
+        this.sourceConfig = sourceConfig;
+    }
+
+    public String getSpiderConfig() {
+        return spiderConfig;
+    }
+
+    public void setSpiderConfig(String spiderConfig) {
+        this.spiderConfig = spiderConfig;
     }
 
     public String getCreatedBy() {
@@ -200,7 +189,6 @@ public class SpiderProjectManage {
                 ", name='" + name + '\'' +
                 ", displayName='" + displayName + '\'' +
                 ", rootUrl='" + rootUrl + '\'' +
-                ", config='" + config + '\'' +
                 ", createdBy='" + createdBy + '\'' +
                 ", modifiedBy='" + modifiedBy + '\'' +
                 ", createdTime=" + createdTime +

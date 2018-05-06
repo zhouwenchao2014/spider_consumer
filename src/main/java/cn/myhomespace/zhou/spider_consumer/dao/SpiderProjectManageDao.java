@@ -4,6 +4,7 @@ import cn.myhomespace.zhou.spider_consumer.object.SpiderProjectManage;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * describe:
@@ -12,9 +13,8 @@ import java.util.List;
  * @date 2018/05/04
  */
 @Mapper
-public interface SpiderProjectManageDao {
+public interface SpiderProjectManageDao extends BaseDao<SpiderProjectManage>{
 
-    List<SpiderProjectManage> queryAll();
-    int insert(SpiderProjectManage spiderProjectManage);
+
 
 }

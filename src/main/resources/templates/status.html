@@ -2,9 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>主页</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/bootstrap-switch.min.css" rel="stylesheet">
+    <title>爬取信息管理</title>
 </head>
 <body>
-$END$
+<div class="col-md-1">
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation" ><a href="start">爬取页面管理</a></li>
+        <li role="presentation" ><a href="message">爬取信息</a></li>
+        <li role="presentation" class="active"><a href="status">爬取状态</a></li>
+    </ul>
+</div>
+<div class="col-md-11">
+    <div class="row">
+        <div class="col-md-2" style="text-align: right">
+            页面解析进度：
+        </div>
+        <div class="col-md-10">
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbarpage" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 10%;height: 20px;margin-bottom: 20px;">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-2" style="text-align: right">
+            页面存储进度：
+        </div>
+        <div class="col-md-10">
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 10%;    height: 20px;margin-bottom: 20px;">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/status.js"></script>
 </body>
 </html>

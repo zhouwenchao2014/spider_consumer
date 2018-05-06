@@ -2,9 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>主页</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/bootstrap-switch.min.css" rel="stylesheet">
+    <title>爬取信息管理</title>
 </head>
 <body>
-$END$
+<div class="col-md-1">
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation" ><a href="start">爬取页面管理</a></li>
+        <li role="presentation" class="active"><a href="message">爬取信息</a></li>
+        <li role="presentation"><a href="status">爬取状态</a></li>
+    </ul>
+</div>
+<div class="col-md-11">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="input-group">
+                <span class="input-group-addon">标题：</span>
+                <input id="title_search" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="input-group">
+                <span class="input-group-addon">资源：</span>
+                <input id="sources_search" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="input-group">
+                <span class="input-group-addon">项目标识:</span>
+                <input id="siteName_search" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group">
+                <span class="input-group-addon">url:</span>
+                <input id="url_search" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-info">查询</button>
+        </div>
+    </div>
+    <div class="row">
+        <table id="mytable" data-side-pagination="server" class="table table-hover"></table>
+    </div>
+</div>
+
+<div id="sourceView" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">资源</h4>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
+
+<!-- Latest compiled and minified Locales -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="js/message.js"></script>
+<script src="js/bootstrap-switch.min.js"></script>
 </body>
 </html>
